@@ -1,0 +1,315 @@
+/* 전체 스타일 */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f7f7f7;
+    margin: 0;
+    overflow-x: hidden; /* 수평 스크롤 방지 */
+}
+
+/* 캘린더 컨테이너 */
+.calendar-container {
+    width: 90%;
+    max-width: 600px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+/* 캘린더 헤더 */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #4CAF50;
+    color: white;
+}
+
+/* 캘린더 */
+#calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+    padding: 10px;
+}
+
+#calendar div {
+    text-align: center;
+    padding: 10px;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+}
+
+#calendar div.saturday,
+#calendar div.sunday {
+    color: red;
+    font-weight: bold;
+}
+
+/* 태스크 배지 */
+.task-badge {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 16px;
+    height: 16px;
+    background-color: #f39c12;
+    color: #fff;
+    border-radius: 50%;
+    font-size: 14px;
+    text-align: center;
+    line-height: 16px;
+}
+
+/* 팝업 스타일 */
+.popup {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#popup-title {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+#tasks-list {
+    margin-bottom: 20px;
+    list-style: none;
+    padding: 0;
+}
+
+/* 태스크 리스트 스타일 */
+.task-list {
+    list-style: none;
+    padding: 0;
+}
+
+.task-list li {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    position: relative;
+}
+
+.task-list li:last-child {
+    border-bottom: 1px solid #ddd;
+    padding: 5px;
+    margin-bottom: 20px; /* 추가적인 여백을 삽입 */
+}
+
+.task-list li:before {
+    content: "";
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    width: 8px;
+    height: 8px;
+    border: 2px solid #333;
+    border-radius: 50%;
+    transform: translateY(-50%);
+}
+
+.task-list li .task-description {
+    flex: 1;
+    padding-left: 30px;
+}
+
+.task-list li .delete-btn {
+    margin-left: 10px;
+    color: #aaa;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* 체크된 태스크 스타일 */
+.task-list li.checked {
+    font-style: italic;
+    text-decoration: line-through;
+}
+
+/* 입력 필드 및 버튼 스타일 */
+#task-input-form {
+    display: flex;
+    flex-direction: column;
+}
+
+#task-input-form label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+#task-person, #task-text {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 1em;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+#task-person {
+    background-color: #fff;
+}
+
+#task-text {
+    background-color: #fff;
+}
+
+#add-task {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+#add-task:hover {
+    background-color: #45a049;
+}
+
+/* 우선순위 표 스타일 */
+.priority-container {
+    width: 90%;
+    max-width: 600px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+#priority-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#priority-table th,
+#priority-table td {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+}
+
+.priority-number {
+    width: 80px;
+}
+
+.task-summary {
+    padding-left: 15px;
+}
+
+.completion-status {
+    width: 120px;
+}
+
+/* 우선순위 입력 필드 스타일 */
+#priority-input-section {
+    display: flex;
+    flex-direction: column;
+    margin: 20px 0;
+}
+
+#priority-text {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 1em;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    resize: none;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#add-priority {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    margin-bottom: 10px;
+}
+
+#add-priority:hover {
+    background-color: #45a049;
+}
+
+.completed {
+    text-decoration: line-through;
+    font-style: italic;
+}
+
+
+/* 토스트 메시지 스타일 */
+.toast {
+    visibility: hidden;
+    min-width: 250px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 30px;
+    transform: translateX(-50%);
+    font-size: 16px;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.toast.show {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+@-webkit-keyframes fadeInOut {
+    0% { opacity: 0; }
+    20% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0; }
+    20% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { opacity: 0; }
+}
